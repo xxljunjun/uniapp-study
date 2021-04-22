@@ -28,7 +28,7 @@
       <text class="line_text">Mileage</text>
     </view>
     <view class="inp_Box">
-      <input class="smallinp" placeholder="Pelese enter"/>
+      <input class="smallinp" placeholder="Pelese enter" v-model="unitNum"/>
       <input class="largeinp" disabled v-model="unit" @touchend.stop="openUnit"/>
       <image src="/static/daotong/speak.png" class="speak1"/>
       <image src="/static/daotong/rightArrow.png" class="downArrow"/>
@@ -92,37 +92,22 @@ import view from '../component/view/view.vue'
   components: { view, Image },
     data(){
       return{
-        unit:"Miles",
+        unitState:false,
+        unit:"Miles",  //里程单位
         unitArr:[
           {id:1,unit:"Miles"},
           {id:2,unit:"Kilometers"}
         ],
-        unitState:false,
-        System:"",
-        Vehicle:"2003 BMW 530i 3.0L",
+        unitNum:"",  //里程数
+        System:"",  //系统
         ischooseSystem:false,
         systemArr:[
           {id:1,system:"Engine",ischeck:false},
           {id:2,system:"ADAS system",ischeck:false},
           {id:3,system:"Communication systems",ischeck:false},
           {id:4,system:"Anti-theft and entry system",ischeck:false},
-          {id:5,system:"Wheels and tires",ischeck:false},
-          {id:6,system:"Engine",ischeck:false},
-          {id:7,system:"ADAS system",ischeck:false},
-          {id:8,system:"Communication systems",ischeck:false},
-          {id:9,system:"Anti-theft and entry system",ischeck:false},
-          {id:10,system:"Wheels and tires",ischeck:false},
-          {id:11,system:"Engine",ischeck:false},
-          {id:12,system:"ADAS system",ischeck:false},
-          {id:13,system:"Communication systems",ischeck:false},
-          {id:14,system:"Anti-theft and entry system",ischeck:false},
-          {id:15,system:"Wheels and tires",ischeck:false},
-          {id:16,system:"Engine",ischeck:false},
-          {id:17,system:"ADAS system",ischeck:false},
-          {id:18,system:"Communication systems",ischeck:false},
-          {id:19,system:"Anti-theft and entry system",ischeck:false},
-          {id:20,system:"Wheels and tires",ischeck:false},
-        ]
+        ],
+        Vehicle:"2003 BMW 530i 3.0L", //机型
       }
     },
     onLoad() {
