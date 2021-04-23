@@ -353,6 +353,18 @@
 			
 		},
 		{
+			"root": "pages/jun",
+			"pages":[
+				{
+					"path": "/Favorite",
+					"style" : {  
+						"navigationStyle":"custom"  
+					} 
+				}
+			]
+			
+		},
+		{
 			"root": "pages/API",
 			"pages": [
 				{

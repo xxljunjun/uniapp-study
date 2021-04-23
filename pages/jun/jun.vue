@@ -1,9 +1,6 @@
 <template>
   <view class="xxl">
-    <view class="header">
-      <image src="/static/daotong/back.png" class="back" @tap="back"/>
-      <text class="title">New Post</text>
-    </view>
+    <TopBack title="New Post"/>
 <!-- 导入报告按钮 -->
     <view class="addBox">
       <view class="text_1">
@@ -53,7 +50,18 @@
       <text class="line_text">DOC</text>
     </view>
     <view class="inp_Box">
-      <input class="inp" placeholder="Pelese select"/>
+      <uni-easyinput 
+        type="textarea" 
+        autoHeight 
+        v-model="Dtcvalue" 
+        placeholder="Pelese select" 
+        class="Doctextarea"
+        :clearable="false"
+        placeholderStyle="color: #AAAAAA;font-size:30rpx;"
+        :maxlength="8"
+        @keyup.native="toDtc($event)"
+      >
+      </uni-easyinput>
       <image src="/static/daotong/speak.png" class="speak"/>
     </view>
 <!-- 提交 -->
@@ -86,10 +94,11 @@
 </template>
 
 <script>
-import Image from '../API/image/image.vue'
-import view from '../component/view/view.vue'
+import TopBack from "./component/topBack"
   export default {
-  components: { view, Image },
+  components: { 
+    TopBack 
+  },
     data(){
       return{
         unitState:false,
@@ -108,6 +117,7 @@ import view from '../component/view/view.vue'
           {id:4,system:"Anti-theft and entry system",ischeck:false},
         ],
         Vehicle:"2003 BMW 530i 3.0L", //机型
+        Dtcvalue:"",
       }
     },
     onLoad() {
@@ -120,6 +130,15 @@ import view from '../component/view/view.vue'
       document.body.removeEventListener('touchend', this.clickBody)
     },
     methods:{
+      toDtc(e){
+        //回车键13
+        //空格键32
+        //逗号188
+        if (e.keyCode === 13) {
+          console.log(e)
+          this.Dtcvalue =""
+        }
+      },
       okSystem(){
         let arr =this.systemArr.filter(val=>{
           return val.ischeck
@@ -166,34 +185,28 @@ import view from '../component/view/view.vue'
 </script>
 
 <style lang="scss" scoped>
-/* 自定义导航栏 */
-.header{
-  height: 88rpx;
-  width: 750rpx;
-  background: linear-gradient(360deg,rgba(210,210,210,1) 0%,rgba(255,255,255,1) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  z-index: 99;
-  .back{
-    height: 48rpx;
-    width: 48rpx;
-    position: relative;
-    left: -235rpx;
+/* textarea */
+.xxl{
+  /deep/.uni-easyinput__content-textarea{
+    padding:0;
+  } 
+  /deep/.is-textarea{
+    background:rgba(245,245,245,1) !important;
   }
-  .title{
-    text-align: center;
-    font-size:36rpx;
-    font-family:HelveticaNeue-Medium,HelveticaNeue;
-    font-weight:600;
-    color:rgba(0,0,0,1);
-    line-height:44rpx;
+  /deep/.input-padding{
+    padding-left: 30rpx;
+    line-height: 88rpx;
+    color: #000;
+    font-size: 30rpx;
   }
 }
 
-/* css样式 */
+.dtc{
+  width:171px;
+  height:56px;
+  background:rgba(225,225,225,1);
+  border-radius:28px;
+}
 .system_BoX{
   width: 750rpx;
   height: 100%;
@@ -418,9 +431,17 @@ import view from '../component/view/view.vue'
   top: 8rpx;
 }
 .inp{
-  background: #fff;
   width: 690rpx;
   height: 88rpx;
+  background:rgba(245,245,245,1);
+  box-shadow:0px 4rpx 2rpx 0px rgba(226,226,226,1);
+  border-radius:10rpx;
+  border:2rpx solid rgba(184,184,184,1);
+  font-size: 30rpx;
+}
+.Doctextarea{
+  max-width: 690rpx ;
+  min-height: 88rpx;
   background:rgba(245,245,245,1);
   box-shadow:0px 4rpx 2rpx 0px rgba(226,226,226,1);
   border-radius:10rpx;
