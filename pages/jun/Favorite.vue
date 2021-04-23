@@ -16,6 +16,7 @@ import TopBack from "./component/topBack"
 		data(){
 			return{
 				detailArr:[],
+				dialogIsShow:false
 			}
 		},
 		mounted(){
@@ -23,7 +24,7 @@ import TopBack from "./component/topBack"
 		},
 		components:{
 			TopBack,
-			Box
+			Box,
 		},
 		methods:{
 			getBoxDetail(){
