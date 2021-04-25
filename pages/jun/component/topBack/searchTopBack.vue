@@ -40,7 +40,7 @@ export default {
 
 <style lang="scss" scoped>
 .uni-input-placeholder {
-  left: 76px !important;
+  left: 76rpx !important;
 }
 /deep/.uni-input-input {
   padding-left: 74rpx !important;
