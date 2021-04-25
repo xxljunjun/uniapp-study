@@ -2,6 +2,7 @@
 	<view class="uni-container">
 		<navigator url="/pages/jun/jun">点我去小溪流001</navigator>
 		<navigator url="/pages/jun/Favorite">点我去小溪流002</navigator>
+		<navigator url="/pages/jun/Mypost">点我去小溪流003</navigator>
 		<view v-if="!hasLeftWin" class="uni-header-logo">
 			<image class="uni-header-image" src="/static/componentIndex.png"></image>
 		</view>

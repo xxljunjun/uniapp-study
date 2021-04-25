@@ -26,7 +26,7 @@
 			<image src="/static/daotong/yan.png" class="yan"/>
 			<text>{{items.detail.num2}}</text>
 		</view>
-		<view class="close_box" @tap="toClose">
+		<view class="close_box" @tap="toClose" v-if="canDelete">
 			<image src="/static/daotong/close_1.png" class="close"/>
 		</view>
 		<MyDialog 
@@ -58,6 +58,9 @@ import MyDialog from "./myDialog"
 					return {}
 				},
 				required:true
+			},
+			canDelete:{
+				type:Boolean,
 			}
 		},
 		methods:{
@@ -80,7 +83,7 @@ import MyDialog from "./myDialog"
 .box{
 	width:690rpx;
 	height:541rpx;
-	background:rgba(245,245,245,1);
+	background:#fff;
 	box-shadow:0px 2rpx 6rpx 0px rgba(0,0,0,0.08);
 	border-radius:14rpx;
 	position: relative;

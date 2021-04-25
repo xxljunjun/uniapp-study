@@ -365,6 +365,18 @@
 			
 		},
 		{
+			"root": "pages/jun",
+			"pages":[
+				{
+					"path": "/Mypost",
+					"style" : {  
+						"navigationStyle":"custom"  
+					} 
+				}
+			]
+			
+		},
+		{
 			"root": "pages/API",
 			"pages": [
 				{

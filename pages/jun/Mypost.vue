@@ -1,7 +1,10 @@
 <template>
-	<view class="favorite">
-		<TopBack title="Favorite"/>
-		<view class="detailbox" v-for="item in detailArr" :key="item.id">
+	<view class="mypost">
+		 <TopBack title="Mypost"/>
+		 <view class="reject">
+
+		 </view>
+		 <view class="detailbox" v-for="item in detailArr" :key="item.id">
 			<Box
 				:items="item"
 				:canDelete="canDelete"
@@ -11,25 +14,20 @@
 </template>
 
 <script>
-import Box from "./component/Box"
 import TopBack from "./component/topBack"
+import Box from "./component/Box"
 	export default {
 		data(){
 			return{
 				detailArr:[],
-				dialogIsShow:false,
-				canDelete:true,
+				canDelete:false,
 			}
 		},
 		mounted(){
-			this.getBoxDetail()
-		},
-		components:{
-			TopBack,
-			Box,
+			this.getMypostList()
 		},
 		methods:{
-			getBoxDetail(){
+			getMypostList(){
 				this.detailArr = [
 					{
 						id:1,detail:{
@@ -81,17 +79,31 @@ import TopBack from "./component/topBack"
 					},
 				]
 			}
+		},
+		components:{
+			TopBack,
+			Box
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-.favorite{
+.mypost{
 	padding-top:88rpx ;
 	width:750px;
 	background:rgba(224,224,224,1);
 	.detailbox{
 		padding: 30rpx 0 0 30rpx;
+	}
+	.reject{
+		width: 690rpx;
+		height: 592rpx;
+		background:rgba(245,245,245,1);
+		box-shadow:0px 2rpx 6rpx 0px rgba(0,0,0,0.08);
+		border-radius:12rpx;
+		margin-left:30rpx;
+		margin-top:30rpx;
+		background:#fff;
 	}
 }
 </style>
