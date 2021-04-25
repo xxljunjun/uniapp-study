@@ -123,9 +123,9 @@ import MyDialog from "./myDialog"
 		}
 	}
 	.detext{
-		width:630px;
-		height:76px;
-		font-size:30px;
+		width:630rpx;
+		height:76rpx;
+		font-size:30rpx;
 		font-family:HelveticaNeue;
 		color:rgba(85,85,85,1);
 		line-height:30rpx;

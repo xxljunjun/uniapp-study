@@ -1,7 +1,7 @@
 <template>
 	<view class="favorite">
 		<TopBack title="Favorite"/>
-		<view class="detailbox" v-for="item in detailArr" :key="item.id">
+		<view class="detailbox" v-for="item in detailArr" :key="item.id" @tap="toDetail(item.id)">
 			<Box
 				:items="item"
 				:canDelete="canDelete"
@@ -29,6 +29,11 @@ import TopBack from "./component/topBack"
 			Box,
 		},
 		methods:{
+			toDetail(id){
+				console.log("todetaol",id)
+				// this.$router.push("/")
+				//跳转到详情页
+			},
 			getBoxDetail(){
 				this.detailArr = [
 					{

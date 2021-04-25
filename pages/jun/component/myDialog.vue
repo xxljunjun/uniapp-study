@@ -5,8 +5,8 @@
 			<view class="text">Are you sure to remove it from favorite</view>
 			<view class="btn_box">
 				<view class="Cancel" @tap="cancel">Cancel</view>
-			<view class="Confirm" @tap="Confirm">Confirm</view>
-		</view>
+				<view class="Confirm" @tap="Confirm">Confirm</view>
+			</view>
 		</view>
 		<view class="mask"></view>
 	</view>
@@ -48,10 +48,10 @@
 	z-index: 999;
 }
 .content{
-	width:580px;
-	height:317px;
+	width:580rpx;
+	height:317rpx;
 	background:rgba(245,245,245,1);
-	border-radius:14px;
+	border-radius:14rpx;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -83,21 +83,21 @@
 		margin-top:60rpx;
 		margin-bottom: 16rpx;
 		width:100%;
-		height:42px;
-		font-size:34px;
+		height:42rpx;
+		font-size:34rpx;
 		font-family:HelveticaNeue-Medium,HelveticaNeue;
 		font-weight:600;
 		color:rgba(0,0,0,1);
-		line-height:42px;
+		line-height:42rpx;
 		text-align: center;
 	}
 	.text{
 		width:100%;
-		height:38px;
-		font-size:30px;
+		height:38rpx;
+		font-size:30rpx;
 		font-family:HelveticaNeue;
 		color:rgba(85,85,85,1);
-		line-height:38px;
+		line-height:38rpx;
 		text-align: center;
 	}
 }
