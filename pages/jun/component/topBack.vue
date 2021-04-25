@@ -2,25 +2,38 @@
   <view class="header">
     <image src="/static/daotong/back.png" class="back" @tap="back" />
     <text class="title">{{ title }}</text>
+    <view class="rightBtn" @tap="rightBack">{{ rightText }}</view>
   </view>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {}
   },
   props: {
-    title: String,
+    title: {
+      type:String,
+      default:'',
+      required:false,
+    },
+    rightText: {
+      type:String,
+      default:'',
+      required:false,
+    },
   },
   methods: {
     back() {
       uni.navigateBack({
         delta: 1,
-      });
+      })
+    },
+    rightBack() {
+      this.$emit('rightBack')
     },
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -42,8 +55,8 @@ export default {
   .back {
     height: 48rpx;
     width: 48rpx;
-    position: relative;
-    left: -235rpx;
+    position: absolute;
+    left: 30rpx;
   }
   .title {
     text-align: center;
@@ -52,6 +65,14 @@ export default {
     font-weight: 600;
     color: rgba(0, 0, 0, 1);
     line-height: 44rpx;
+  }
+  .rightBtn {
+    position: absolute;
+    right: 36rpx;
+    font-size: 34rpx;
+    font-family: HelveticaNeue;
+    color: rgba(0, 126, 255, 1);
+    line-height: 36rpx;
   }
 }
 </style>

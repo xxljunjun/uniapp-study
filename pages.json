@@ -342,39 +342,47 @@
 	"subPackages": [
 		{
 			"root": "pages/jun",
-			"pages":[
+			"pages": [
 				{
 					"path": "/jun",
-					"style" : {  
-						"navigationStyle":"custom"  
-					} 
+					"style": {
+						"navigationStyle": "custom"
+					}
 				}
 			]
-			
 		},
 		{
 			"root": "pages/jun",
-			"pages":[
+			"pages": [
 				{
 					"path": "/Favorite",
-					"style" : {  
-						"navigationStyle":"custom"  
-					} 
+					"style": {
+						"navigationStyle": "custom"
+					}
 				}
 			]
-			
 		},
 		{
 			"root": "pages/jun",
-			"pages":[
+			"pages": [
 				{
 					"path": "/Mypost",
-					"style" : {  
-						"navigationStyle":"custom"  
-					} 
+					"style": {
+						"navigationStyle": "custom"
+					}
 				}
 			]
-			
+		},
+		{
+			"root": "pages/jun",
+			"pages": [
+				{
+					"path": "/detail",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				}
+			]
 		},
 		{
 			"root": "pages/API",
