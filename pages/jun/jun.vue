@@ -109,7 +109,7 @@
 </template>
 
 <script>
-import TopBack from './component/topBack'
+import TopBack from './component/topBack/topBack'
 import Picker from './component/picker'
 export default {
   components: {

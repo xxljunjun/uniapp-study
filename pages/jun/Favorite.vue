@@ -12,7 +12,7 @@
 
 <script>
 import Box from "./component/Box"
-import TopBack from "./component/topBack"
+import TopBack from "./component/topBack/topBack"
 	export default {
 		data(){
 			return{

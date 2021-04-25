@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import TopBack from './component/topBack'
+import TopBack from './component/topBack/topBack'
 import Box from './component/Box'
 export default {
   data() {

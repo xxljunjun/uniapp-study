@@ -385,6 +385,28 @@
 			]
 		},
 		{
+			"root": "pages/jun",
+			"pages": [
+				{
+					"path": "/home",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				}
+			]
+		},
+		{
+			"root": "pages/jun",
+			"pages": [
+				{
+					"path": "/search",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				}
+			]
+		},
+		{
 			"root": "pages/API",
 			"pages": [
 				{
