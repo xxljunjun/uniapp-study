@@ -12,12 +12,17 @@
     </view>
     <!-- 轮播图 -->
     <view class="swiper-box">
+      <view class="daily">
+        <ul class="lb" :class="{marquee_top:animate}">
+          <li v-for="(item, index) in list" >{{item}}</li>
+        </ul>
+        <!-- <image src="/static/junjun/Tsize_11.gif" class="header animated bounceOutUp"/> -->
+        <!-- <view class="text animate__animated animate__bounceOutUp">成功购买口袋妖怪复刻</view> -->
+      </view>
       <swiper
         class="swiper"
         :indicator-dots="true"
         :autoplay="true"
-        :interval="interval"
-        :duration="duration"
         :circular="true"
       >
         <swiper-item>
@@ -37,7 +42,12 @@
         </swiper-item>
       </swiper>
     </view>
-    <view class="box"></view>
+    <!-- 标签 -->
+    <view class="box">
+        <view class="box-top"></view>
+        <view class="box-middle"></view>
+        <view class="box-bottom"></view>
+    </view>
     <view class="guess"></view>
   </view>
 </template>
@@ -46,7 +56,27 @@
 export default {
   props: {},
   data() {
-    return {}
+    return {
+      animate: false,
+      list: ["恭喜***获得10积分", "恭喜***获得20积分", "恭喜***获得40积分"]
+    }
+  },
+  mounted(){
+      let that = this;
+      const timer = setInterval(() => {
+        this.animate = true;
+  
+        setTimeout(() => {
+          that.list.push(this.list[0]);
+          that.list.shift();
+          that.animate = false;
+          console.log(Math.random());
+        }, 500);
+      }, 3000);
+      // 通过$once来监听定时器，在beforeDestroy钩子可以被清除。
+      this.$once("hook:beforeDestroy", () => {
+        clearInterval(timer);
+    });
   },
   methods: {},
   components: {},
@@ -101,6 +131,7 @@ export default {
     justify-content: center;
     height: 338rpx;
     width: 750rpx;
+    position:relative;
     .swiper {
       width: 710rpx;
       height: 300rpx;
@@ -109,6 +140,35 @@ export default {
         border-radius: 10rpx;
         width: 710rpx;
         height: 300rpx;
+      }
+    }
+    .daily{
+      width:280rpx;
+      height:50rpx;
+      background:#fff;
+      opacity:0.7;
+      border-radius:50rpx;
+      position:absolute;
+      bottom:34rpx;
+      right:22rpx;
+      z-index:11;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      .marquee_top {
+        transition: all 0.5s;
+        margin-top: -100rpx;
+      }
+      .header{
+        width:30rpx;
+        height:30rpx;
+        margin:0 10rpx;
+      }
+      .text{
+        width:225rpx;
+        white-space:nowrap; //强制不换行
+        overflow:hidden;
+        text-overflow:ellipsis;
       }
     }
   }

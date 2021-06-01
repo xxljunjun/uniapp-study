@@ -2,8 +2,8 @@ import Vue from 'vue'
 import App from './App'
 
 import store from './store'
-
-
+import animated from 'animate.css' 
+Vue.use(animated)
 Vue.config.productionTip = false
 
 Vue.prototype.$store = store
