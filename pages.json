@@ -407,6 +407,17 @@
 			]
 		},
 		{
+			"root": "pages/jun",
+			"pages": [
+				{
+					"path": "/Tindex",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				}
+			]
+		},
+		{
 			"root": "pages/API",
 			"pages": [
 				{

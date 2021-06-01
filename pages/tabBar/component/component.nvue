@@ -5,6 +5,7 @@
 		<navigator url="/pages/jun/Mypost">点我去小溪流003</navigator>
 		<navigator url="/pages/jun/detail">点我去小溪流004</navigator>
 		<navigator url="/pages/jun/home">点我去小溪流home</navigator>
+		<navigator url="/pages/jun/Tindex">点我去小溪流仿淘手游index</navigator>
 		<view v-if="!hasLeftWin" class="uni-header-logo">
 			<image class="uni-header-image" src="/static/componentIndex.png"></image>
 		</view>
