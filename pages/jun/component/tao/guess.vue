@@ -17,7 +17,7 @@
         @change="changeIndex"
       >
         <swiper-item v-for="(item, index) in swiperArr" :key="index">
-          <view class="swiper-item"> a </view>
+          <view class="box-item" v-for="(item, index) in 3" :key="index"></view>
         </swiper-item>
       </swiper>
     </view>
@@ -33,15 +33,99 @@ export default {
     return {
       currentIndex: 0,
       swiperArr: [
-        { id: 1, path: '/static/junjun/Tsize_11.jpg' },
-        { id: 2, path: '/static/junjun/Tsize_11.jpg' },
-        { id: 3, path: '/static/junjun/Tsize_11.jpg' },
+        {
+          id: 1,
+          boxArr: [
+            {
+              id: 1,
+              path: '',
+              whichGame: '',
+              title: '',
+              content: '',
+              price: '',
+            },
+            {
+              id: 2,
+              path: '',
+              whichGame: '',
+              title: '',
+              content: '',
+              price: '',
+            },
+            {
+              id: 3,
+              path: '',
+              whichGame: '',
+              title: '',
+              content: '',
+              price: '',
+            },
+          ],
+        },
+        {
+          id: 2,
+          boxArr: [
+            {
+              id: 1,
+              path: '',
+              whichGame: '',
+              title: '',
+              content: '',
+              price: '',
+            },
+            {
+              id: 2,
+              path: '',
+              whichGame: '',
+              title: '',
+              content: '',
+              price: '',
+            },
+            {
+              id: 3,
+              path: '',
+              whichGame: '',
+              title: '',
+              content: '',
+              price: '',
+            },
+          ],
+        },
+        {
+          id: 3,
+          boxArr: [
+            {
+              id: 1,
+              path: '',
+              whichGame: '',
+              title: '',
+              content: '',
+              price: '',
+            },
+            {
+              id: 2,
+              path: '',
+              whichGame: '',
+              title: '',
+              content: '',
+              price: '',
+            },
+            {
+              id: 3,
+              path: '',
+              whichGame: '',
+              title: '',
+              content: '',
+              price: '',
+            },
+          ],
+        },
       ],
     }
   },
   methods: {
     changeIndex(e) {
-      console.log('00000000', e)
+      // console.log('00000000', e)
       //e.detail.current
       let slider = document.getElementsByClassName('sliders')[0]
       if (e.detail.current == 0) {
@@ -66,6 +150,7 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 20rpx;
     .left {
       font-size: 38rpx;
       color: #000;
@@ -88,10 +173,20 @@ export default {
     height: 450rpx;
     width: 700rpx;
     position: relative;
+    /deep/uni-swiper-item {
+      display: flex;
+    }
     .swiper {
-      width: 700rpx;
       height: 450rpx;
-      background: red;
+      width: 700rpx;
+    }
+    .box-item {
+      background: #f8f8f8;
+      height: 450rpx;
+      width: 230rpx;
+      &:nth-child(2) {
+        margin: 0 6rpx;
+      }
     }
   }
   .gun {
