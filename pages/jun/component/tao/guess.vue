@@ -17,7 +17,15 @@
         @change="changeIndex"
       >
         <swiper-item v-for="(item, index) in swiperArr" :key="index">
-          <view class="box-item" v-for="(item, index) in 3" :key="index"></view>
+          <view class="box-item" v-for="(val, index) in item.boxArr" :key="index">
+            <view class="img-box">
+              <image :src="val.path" class="gameImg" />
+              <view class="game">{{val.whichGame}}</view>
+            </view>
+            <view class="titles">{{val.title}}</view>
+             <view class="content">{{val.content}}</view>
+              <view class="price">￥{{val.price}}</view>
+          </view>
         </swiper-item>
       </swiper>
     </view>
@@ -38,27 +46,27 @@ export default {
           boxArr: [
             {
               id: 1,
-              path: '',
-              whichGame: '',
-              title: '',
-              content: '',
-              price: '',
+              path: '/static/junjun/Tsize_11.jpg',
+              whichGame: '口袋妖怪复刻',
+              title: '新区榜三无敌号主卖号来啦',
+              content: '安卓官方 全部都是厉害的角色',
+              price: '188',
             },
             {
               id: 2,
-              path: '',
-              whichGame: '',
-              title: '',
-              content: '',
-              price: '',
+              path: '/static/junjun/Tsize_11.jpg',
+              whichGame: '口袋妖怪复刻',
+              title: '新区榜三无敌号主卖号来啦',
+              content: '安卓官方 全部都是厉害的角色',
+              price: '188',
             },
             {
               id: 3,
-              path: '',
-              whichGame: '',
-              title: '',
-              content: '',
-              price: '',
+              path: '/static/junjun/Tsize_11.jpg',
+              whichGame: '口袋妖怪复刻',
+              title: '新区榜三无敌号主卖号来啦',
+              content: '安卓官方 全部都是厉害的角色',
+              price: '188',
             },
           ],
         },
@@ -67,27 +75,27 @@ export default {
           boxArr: [
             {
               id: 1,
-              path: '',
-              whichGame: '',
-              title: '',
-              content: '',
-              price: '',
+              path: '/static/junjun/Tsize_11.jpg',
+              whichGame: '口袋妖怪复刻',
+              title: '新区榜三无敌号主卖号来啦',
+              content: '安卓官方 全部都是厉害的角色',
+              price: '188',
             },
             {
               id: 2,
-              path: '',
-              whichGame: '',
-              title: '',
-              content: '',
-              price: '',
+              path: '/static/junjun/Tsize_11.jpg',
+              whichGame: '口袋妖怪复刻',
+              title: '新区榜三无敌号主卖号来啦',
+              content: '安卓官方 全部都是厉害的角色',
+              price: '188',
             },
             {
               id: 3,
-              path: '',
-              whichGame: '',
-              title: '',
-              content: '',
-              price: '',
+              path: '/static/junjun/Tsize_11.jpg',
+              whichGame: '口袋妖怪复刻',
+              title: '新区榜三无敌号主卖号来啦',
+              content: '安卓官方 全部都是厉害的角色',
+              price: '188',
             },
           ],
         },
@@ -96,27 +104,27 @@ export default {
           boxArr: [
             {
               id: 1,
-              path: '',
-              whichGame: '',
-              title: '',
-              content: '',
-              price: '',
+              path: '/static/junjun/Tsize_11.jpg',
+              whichGame: '口袋妖怪复刻',
+              title: '新区榜三无敌号主卖号来啦',
+              content: '安卓官方 全部都是厉害的角色',
+              price: '188',
             },
             {
               id: 2,
-              path: '',
-              whichGame: '',
-              title: '',
-              content: '',
-              price: '',
+              path: '/static/junjun/Tsize_11.jpg',
+              whichGame: '口袋妖怪复刻',
+              title: '新区榜三无敌号主卖号来啦',
+              content: '安卓官方 全部都是厉害的角色',
+              price: '188',
             },
             {
               id: 3,
-              path: '',
-              whichGame: '',
-              title: '',
-              content: '',
-              price: '',
+              path: '/static/junjun/Tsize_11.jpg',
+              whichGame: '口袋妖怪复刻',
+              title: '新区榜三无敌号主卖号来啦',
+              content: '安卓官方 全部都是厉害的角色',
+              price: '188',
             },
           ],
         },
@@ -142,6 +150,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@mixin find-ellipsis {
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
 .guess {
   padding: 0 25rpx;
   margin-bottom: 90rpx;
@@ -184,6 +197,56 @@ export default {
       background: #f8f8f8;
       height: 450rpx;
       width: 230rpx;
+      .img-box{
+        height:230rpx;
+        width:230rpx;
+        position:relative;
+        margin-bottom:45rpx;
+        .gameImg{
+          height:230rpx;
+          width:230rpx;
+        }
+        .game{
+          color:#fff;
+          font-size:20rpx;
+          width:150rpx;
+          height:34rpx;
+          background:#ffaf02;
+          position:absolute;
+          bottom:-12rpx;
+          left:18rpx;
+          text-align:center;
+          line-height:34rpx;
+          border-radius:5rpx;
+        }
+      }
+      .titles{
+        width:190rpx;
+        padding-left:20rpx;
+        color:#000;
+        font-size:30rpx;
+        line-height:30rpx;
+        margin-bottom:38rpx;
+        @include find-ellipsis
+      }
+      .content{
+        padding-left:20rpx;
+        width:190rpx;
+        @include find-ellipsis
+        color:#8d8d8d;
+        font-size:22rpx;
+        line-height:22rpx;
+        margin-bottom:38rpx;
+      }
+      .price{
+        padding-left:20rpx;
+        width:190rpx;
+        @include find-ellipsis
+         color:#f80344;
+        font-size:30rpx;
+        line-height:30rpx;
+        font-weight:bolder;
+      }
       &:nth-child(2) {
         margin: 0 6rpx;
       }
