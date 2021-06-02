@@ -15,10 +15,7 @@
       <view class="daily">
         <ul class="lb" :class="{ marquee_top: animate }">
           <li v-for="(item, index) in list" class="item" :key="index">
-            <image
-              src="/static/junjun/Tsize_11.gif"
-              class="header animated bounceOutUp"
-            />
+            <image src="/static/junjun/Tsize_11.gif" class="header" />
             <view class="text">{{ item }}</view>
           </li>
         </ul>
@@ -49,7 +46,7 @@
           class="scroll-view_H"
           :scroll-x="true"
           :show-scrollbar="true"
-          :scroll-left="50"
+          @scroll="scroll"
         >
           <view
             class="scroll-view-item_H"
@@ -62,13 +59,24 @@
             <view class="bottom-text">{{ item.text2 }}</view>
           </view>
         </scroll-view>
+        <view class="gun">
+          <view class="slider"></view>
+        </view>
       </view>
     </view>
+    <Guess />
+    <TopGame />
   </view>
 </template>
 
 <script>
+import Guess from './component/tao/guess'
+import TopGame from './component/tao/topGame'
 export default {
+  components: {
+    Guess,
+    TopGame,
+  },
   props: {},
   data() {
     return {
@@ -148,6 +156,20 @@ export default {
     this.scrollEvent()
   },
   methods: {
+    scroll(e) {
+      //e.detail.scrollLeft
+      //440
+      let slider = document.getElementsByClassName('slider')[0]
+      // console.log(slider)
+      // console.log(e.detail.scrollLeft / 8 + 'px')
+      slider.style.left = e.detail.scrollLeft / 8 + 'px'
+      if (e.detail.scrollLeft == 0) {
+        slider.style.left = 0
+      }
+      if (e.detail.scrollLeft == 440) {
+        slider.style.left = '50px'
+      }
+    },
     scrollEvent() {
       let that = this
       //每隔3秒执行一次
@@ -166,7 +188,6 @@ export default {
       })
     },
   },
-  components: {},
 }
 </script>
 
@@ -280,6 +301,7 @@ export default {
     }
   }
   .box {
+    margin-bottom: 90rpx;
     .box-top {
       display: flex;
       flex-direction: row;
@@ -301,7 +323,22 @@ export default {
       }
     }
     .box-bottom {
-      // margin-left: 35rpx;
+      .gun {
+        margin-top: 35rpx;
+        width: 100rpx;
+        height: 8rpx;
+        background: #d8d8d8;
+        border-radius: 4rpx;
+        margin-left: 300rpx;
+        .slider {
+          width: 50rpx;
+          height: 8rpx;
+          background: #ff0141;
+          border-radius: 4rpx;
+          position: relative;
+          left: 0; //0到50的滚动距离
+        }
+      }
       .scroll-view_H {
         white-space: nowrap;
         .scroll-view-item {
