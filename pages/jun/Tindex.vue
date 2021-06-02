@@ -31,19 +31,39 @@
       >
         <swiper-item v-for="(item, index) in swiperArr" :key="index">
           <view class="swiper-item">
-            A
-            <!-- <image :src="item.path" class="swiper-img" /> -->
+            <image :src="item.path" class="swiper-img" />
           </view>
         </swiper-item>
       </swiper>
     </view>
     <!-- 标签 -->
     <view class="box">
-      <view class="box-top"></view>
-      <view class="box-middle"></view>
-      <view class="box-bottom"></view>
+      <view class="box-top">
+        <view class="a-item" v-for="(item, index) in textArr" :key="index">
+          <image :src="item.path" class="icon-img" />
+          <text>{{ item.text }}</text>
+        </view>
+      </view>
+      <view class="box-bottom">
+        <scroll-view
+          class="scroll-view_H"
+          :scroll-x="true"
+          :show-scrollbar="true"
+          :scroll-left="50"
+        >
+          <view
+            class="scroll-view-item_H"
+            v-for="(item, index) in scrollArr"
+            :key="index"
+          >
+            <image :src="item.path1" class="logo-img" />
+            <view class="top-text">{{ item.text1 }}</view>
+            <image :src="item.path2" class="logo-img bottom-img" />
+            <view class="bottom-text">{{ item.text2 }}</view>
+          </view>
+        </scroll-view>
+      </view>
     </view>
-    <view class="guess"></view>
   </view>
 </template>
 
@@ -65,6 +85,62 @@ export default {
         { id: 4, path: '/static/junjun/Tsize_11.jpg' },
         { id: 5, path: '/static/junjun/Tsize_11.jpg' },
         { id: 6, path: '/static/junjun/Tsize_11.jpg' },
+      ],
+      textArr: [
+        { id: 1, path: '/static/junjun/Tsize_15.gif', text: '专业平台' },
+        { id: 2, path: '/static/junjun/Tsize_17.gif', text: '安全保障' },
+        { id: 3, path: '/static/junjun/Tsize_20.gif', text: '卖家身份验证' },
+      ],
+      scrollArr: [
+        {
+          id: 1,
+          path1: '/static/junjun/Tsize_37.gif',
+          path2: '/static/junjun/Tsize_46.gif',
+          text1: '账号',
+          text2: '首冲续充',
+        },
+        {
+          id: 2,
+          path1: '/static/junjun/Tsize_34.gif',
+          path2: '/static/junjun/Tsize_47.gif',
+          text1: '租号',
+          text2: '精品账号',
+        },
+        {
+          id: 3,
+          path1: '/static/junjun/Tsize_31.gif',
+          path2: '/static/junjun/Tsize_48.gif',
+          text1: '找代练',
+          text2: '开局代充',
+        },
+        {
+          id: 4,
+          path1: '/static/junjun/Tsize_26.gif',
+          path2: '/static/junjun/Tsize_50.gif',
+          text1: '福利游戏',
+          text2: '端游专区',
+        },
+        {
+          id: 5,
+          path1: '/static/junjun/Tsize_29.gif',
+          path2: '/static/junjun/Tsize_45.gif',
+          text1: '辅助神器',
+          text2: '折扣充值',
+        },
+        {
+          id: 6,
+          path1: '/static/junjun/Tsize_37.gif',
+          path2: '/static/junjun/Tsize_46.gif',
+          text1: '免费领',
+          text2: '安卓代充',
+        },
+        {
+          id: 7,
+          path1: '/static/junjun/Tsize_34.gif',
+          path2: '/static/junjun/Tsize_15.gif',
+          text1: '游戏币',
+          text2: '首冲续充',
+        },
       ],
     }
   },
@@ -111,6 +187,7 @@ export default {
 }
 .Tindex {
   font-size: 26rpx;
+  background: #fff;
   .top {
     height: 90rpx;
     width: 750rpx;
@@ -199,6 +276,65 @@ export default {
       .marquee_top {
         transition: all 0.5s;
         margin-top: -50rpx;
+      }
+    }
+  }
+  .box {
+    .box-top {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      margin-bottom: 50rpx;
+      .a-item {
+        display: flex;
+        flex-direction: row;
+        color: #8d8d8d;
+        font-size: 24rpx;
+        .icon-img {
+          width: 25rpx;
+          height: 25rpx;
+          margin-right: 10rpx;
+          position: relative;
+          top: 10rpx;
+        }
+      }
+    }
+    .box-bottom {
+      // margin-left: 35rpx;
+      .scroll-view_H {
+        white-space: nowrap;
+        .scroll-view-item {
+          height: 320rpx;
+          text-align: center;
+          font-size: 36rpx;
+        }
+        .scroll-view-item_H {
+          margin-right: 70rpx;
+          display: inline-block; //scroll-view组件使用坑
+          width: 100rpx;
+          height: 320rpx;
+          text-align: center;
+          font-size: 36rpx;
+          &:first-child {
+            margin-left: 35rpx;
+          }
+          &:last-child {
+            margin-right: 35rpx;
+            .bottom-img,
+            .bottom-text {
+              // display: none;
+              opacity: 0;
+            }
+          }
+          .logo-img {
+            width: 80rpx;
+            height: 80rpx;
+          }
+          .top-text {
+            margin-bottom: 32rpx;
+          }
+        }
       }
     }
   }
