@@ -13,11 +13,15 @@
     <!-- 轮播图 -->
     <view class="swiper-box">
       <view class="daily">
-        <ul class="lb" :class="{marquee_top:animate}">
-          <li v-for="(item, index) in list" >{{item}}</li>
+        <ul class="lb" :class="{ marquee_top: animate }">
+          <li v-for="(item, index) in list" class="item" :key="index">
+            <image
+              src="/static/junjun/Tsize_11.gif"
+              class="header animated bounceOutUp"
+            />
+            <view class="text">{{ item }}</view>
+          </li>
         </ul>
-        <!-- <image src="/static/junjun/Tsize_11.gif" class="header animated bounceOutUp"/> -->
-        <!-- <view class="text animate__animated animate__bounceOutUp">成功购买口袋妖怪复刻</view> -->
       </view>
       <swiper
         class="swiper"
@@ -25,28 +29,19 @@
         :autoplay="true"
         :circular="true"
       >
-        <swiper-item>
+        <swiper-item v-for="(item, index) in swiperArr" :key="index">
           <view class="swiper-item">
-            <image src="/static/junjun/Tsize_11.jpg" class="swiper-img" />
-          </view>
-        </swiper-item>
-        <swiper-item>
-          <view class="swiper-item">
-            <image src="/static/junjun/Tsize_11.jpg" class="swiper-img" />
-          </view>
-        </swiper-item>
-        <swiper-item>
-          <view class="swiper-item">
-            <image src="/static/junjun/Tsize_11.jpg" class="swiper-img" />
+            A
+            <!-- <image :src="item.path" class="swiper-img" /> -->
           </view>
         </swiper-item>
       </swiper>
     </view>
     <!-- 标签 -->
     <view class="box">
-        <view class="box-top"></view>
-        <view class="box-middle"></view>
-        <view class="box-bottom"></view>
+      <view class="box-top"></view>
+      <view class="box-middle"></view>
+      <view class="box-bottom"></view>
     </view>
     <view class="guess"></view>
   </view>
@@ -58,32 +53,62 @@ export default {
   data() {
     return {
       animate: false,
-      list: ["恭喜***获得10积分", "恭喜***获得20积分", "恭喜***获得40积分"]
+      list: [
+        '成功购买口袋妖怪复刻',
+        '成功购买王者荣耀满皮肤',
+        '成功购买梦幻西游150级',
+      ],
+      swiperArr: [
+        { id: 1, path: '/static/junjun/Tsize_11.jpg' },
+        { id: 2, path: '/static/junjun/Tsize_11.jpg' },
+        { id: 3, path: '/static/junjun/Tsize_11.jpg' },
+        { id: 4, path: '/static/junjun/Tsize_11.jpg' },
+        { id: 5, path: '/static/junjun/Tsize_11.jpg' },
+        { id: 6, path: '/static/junjun/Tsize_11.jpg' },
+      ],
     }
   },
-  mounted(){
-      let that = this;
-      const timer = setInterval(() => {
-        this.animate = true;
-  
-        setTimeout(() => {
-          that.list.push(this.list[0]);
-          that.list.shift();
-          that.animate = false;
-          console.log(Math.random());
-        }, 500);
-      }, 3000);
-      // 通过$once来监听定时器，在beforeDestroy钩子可以被清除。
-      this.$once("hook:beforeDestroy", () => {
-        clearInterval(timer);
-    });
+  mounted() {
+    this.scrollEvent()
   },
-  methods: {},
+  methods: {
+    scrollEvent() {
+      let that = this
+      //每隔3秒执行一次
+      const timer = setInterval(() => {
+        this.animate = true
+        setTimeout(() => {
+          that.list.push(this.list[0])
+          that.list.shift()
+          that.animate = false
+          console.log(Math.random())
+        }, 500)
+      }, 3000)
+      // 通过$once来监听定时器，在beforeDestroy钩子可以被清除。
+      this.$once('hook:beforeDestroy', () => {
+        clearInterval(timer)
+      })
+    },
+  },
   components: {},
 }
 </script>
 
 <style lang="scss" scoped>
+//修改swiper样式
+/deep/.uni-swiper-dot {
+  //未选择
+  background: #fff;
+  margin-right: 16rpx;
+}
+/deep/.uni-swiper-dot-active {
+  //已选择
+  width: 70rpx;
+  border-radius: 4rpx;
+}
+/deep/.uni-swiper-dots {
+  bottom: 15rpx;
+}
 .Tindex {
   font-size: 26rpx;
   .top {
@@ -131,44 +156,49 @@ export default {
     justify-content: center;
     height: 338rpx;
     width: 750rpx;
-    position:relative;
+    position: relative;
     .swiper {
       width: 710rpx;
       height: 300rpx;
       border-radius: 10rpx;
+      background: red;
       .swiper-img {
         border-radius: 10rpx;
         width: 710rpx;
         height: 300rpx;
       }
     }
-    .daily{
-      width:280rpx;
-      height:50rpx;
-      background:#fff;
-      opacity:0.7;
-      border-radius:50rpx;
-      position:absolute;
-      bottom:34rpx;
-      right:22rpx;
-      z-index:11;
-      display:flex;
-      align-items:center;
-      overflow:hidden;
+    .daily {
+      width: 280rpx;
+      height: 50rpx;
+      background: #fff;
+      opacity: 0.7;
+      border-radius: 50rpx;
+      position: absolute;
+      bottom: 34rpx;
+      right: 28rpx;
+      z-index: 11;
+      overflow: hidden;
+      .lb {
+        .item {
+          display: flex;
+          align-items: center;
+          .header {
+            width: 30rpx;
+            height: 30rpx;
+            margin: 0 10rpx;
+          }
+          .text {
+            width: 225rpx;
+            white-space: nowrap; //强制不换行
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
       .marquee_top {
         transition: all 0.5s;
-        margin-top: -100rpx;
-      }
-      .header{
-        width:30rpx;
-        height:30rpx;
-        margin:0 10rpx;
-      }
-      .text{
-        width:225rpx;
-        white-space:nowrap; //强制不换行
-        overflow:hidden;
-        text-overflow:ellipsis;
+        margin-top: -50rpx;
       }
     }
   }
