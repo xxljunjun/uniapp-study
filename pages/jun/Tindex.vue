@@ -66,16 +66,19 @@
     </view>
     <Guess />
     <TopGame />
+    <MoreGame />
   </view>
 </template>
 
 <script>
 import Guess from './component/tao/guess'
 import TopGame from './component/tao/topGame'
+import MoreGame from './component/tao/moreGame'
 export default {
   components: {
     Guess,
     TopGame,
+    MoreGame,
   },
   props: {},
   data() {
